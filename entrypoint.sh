@@ -28,7 +28,8 @@ sleep 2
 
 /sbin/ip address add 172.16.0.1/24 brd + dev tap_default
 sleep 2
-
+iptables -t nat -D POSTROUTING -s 172.16.0.0/24 -j MASQUERADE
+sleep 2
 iptables -t nat -A POSTROUTING -s 172.16.0.0/24 -j MASQUERADE
 sleep 2
 
